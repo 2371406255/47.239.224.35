@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>股信查</title>
+		<link href="http://nginx.rong.korean-stock-market.com/assets/bootstrap-5.3.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://nginx.rong.korean-stock-market.com/assets/css/index.css" type="text/css" rel="stylesheet" />
+		<script src="http://nginx.rong.korean-stock-market.com/assets/js/jquery.3.7.1.min.js"></script>
+		<script src="http://nginx.rong.korean-stock-market.com/assets/js/web.js"></script>
+		<script src="http://nginx.rong.korean-stock-market.com/assets/js/comment.js"></script>
+	</head>
+
+	<body>
+		<script src="http://nginx.rong.korean-stock-market.com/assets/bootstrap-5.3.0/js/bootstrap.bundle.min.js"></script>
+		<div class="container-fluid header">
+			<div class="container">
+				<div class="row">
+					<div class="col-4">
+						<a href="/">
+							<img src="http://nginx.rong.korean-stock-market.com/assets/imgs/slogo.png" class="logo" alt="">
+						</a>
+					</div>
+					<div class="col-8">
+						<div class="input-group mb-3 input-search float-end">
+							<input type="text" class="form-control" placeholder="输入平台名称|简称|公司名称|网址"
+								aria-label="输入平台名称|简称|公司名称|网址" aria-describedby="button-addon2">
+							<button class="btn btn-outline-secondary top-seach" type="button" id="button-addon2">搜索</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 80px;"> </div>
+		<div class="container-fluid d-flex align-items-center header-img">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-3 col-4">
+						<div class="statistics-item">
+							<div class="name">收录平台</div>
+							<div class="num">1933</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-4">
+						<div class="statistics-item">
+							<div class="name">用户评论</div>
+							<div class="num">8321</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-4">
+						<div class="statistics-item">
+							<div class="name">曝光平台</div>
+							<div class="num">362</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<!-- 内容 -->
+		<div class="container-xl mt-3 mb-3">
+			<div class="row">
+				<div class="col-md-8 col-12">
+					<div class="index-content">
+						<ul class="nav nav-pills border-bottom flex-row justify-content-start" id="myTab"
+							role="tablist">
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active inline-block d-inline-block" id="home-tab" data-bs-toggle="tab"
+									data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+									aria-selected="true">全部排行</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link d-inline-block" id="profile-tab " data-bs-toggle="tab"
+									data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane"
+									aria-selected="false">正常</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link d-inline-block" id="contact-tab" data-bs-toggle="tab"
+									data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane"
+									aria-selected="false">停业</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link d-inline-block" id="disabled-tab" data-bs-toggle="tab"
+									data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane"
+									aria-selected="false">待验证</button>
+							</li>
+						</ul>
+						<div class=" max-width tab-content list-height" id="myTabContent">
+							<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+								tabindex="0">...</div>
+							<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+								tabindex="0">
+								...</div>
+							<div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+								tabindex="0">
+								...</div>
+							<div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab"
+								tabindex="0">...</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-md-4 col-12 mt-md-0 mt-sm-3">
+					<div class="index-content">
+						<div class="hot_tle ps-2">热门评论</div>
+						<div class="comment-wrapper"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<div class="fots">
+				<div class="wrap">
+					<div class="data">
+						<p>数据来源:
+							<span>全国企业信用信息公示系统</span>
+							<span>中国裁判文书网</span>
+							<span>中国执行信息公开网</span>
+							<span>国家知识产权局</span>
+							<span>商标局</span>
+							<span>版权局</span>
+						</p>
+						<p>
+							风险声明：
+							任何投资都具备高风险，投资需谨慎，更需要合法。股信查网站数据，及股信查网站内所有用户提供的所有信息，供用户免费查询，但仅作为参考与研究用途。
+							不构成对任何用户的投资建议，股信查不做任何推荐，用户需自行承担投资风险。版权所有，转载请注明来源。市场有风险，投资需谨慎。
+
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="copyright">
+				<p class="one">
+					<a href="/"><span>关于我们</span></a>
+					<a href="/"><span>联系方式</span></a>
+					<a href="/"><span>用户协议</span></a>
+					<a href="/"><span>免责声明</span></a>
+				</p>
+				<p class="two">版权所有：信息咨询有限公司 @ 股信查 <a rel="nofollow" href="https://beian.miit.gov.cn/"
+						target="_bank">粤ICP备2021134196号</a> &nbsp;&nbsp;电话：g13227532388@gmail.com &nbsp;&nbsp; </p>
+			</div>
+		</div>
+
+		<script>
+			const statusArray = [{
+					name: "已验证",
+					value: 1
+				},
+				{
+					name: "停业",
+					value: 2
+				},
+				{
+					name: "待验证",
+					value: 3
+				},
+			]
+
+			// webList = props.type == 0 ? list : list.filter((t) => t.status == props.type)
+
+			function handleClick(id) {
+				window.open('./detail.html?id=' + id)
+			}
+
+			// webList = webList.filter((wb) => wb.name.includes(itemKey.value));
+
+			function _setData(el, list) {
+				let childEl = ''
+				list.forEach(web => {
+					let template = ` <div class="list">
+                <div class="l-list-item pt-2 pb-2 ps-2"  onclick="handleClick('${web.id}')">
+                    <img src="${web.icon}" class="l-left" />
+                    <div class="content" >
+                        <div>
+                            <span class="title">${web.name}</span>
+                        ${web.status == 1 ? `<span class="badge text-bg-success">${statusArray.find((a) => a.value == web.status).name}</span>` : ''}
+                        ${web.status == 2 ? `<span class="badge text-bg-danger">${statusArray.find((a) => a.value == web.status).name}</span>` : ''}
+                        ${web.status == 3 ? `<span class="badge text-bg-warning">${statusArray.find((a) => a.value == web.status).name}</span>` : ''}
+                        </div>
+                        <div class="rate">
+                            <span>综合评分</span>
+                            <el-rate v-model="web.star" :disabled="true" />
+                        </div>
+                        <div class="remark-text">
+                            <span>${web.remark}&nbsp;</span>
+                            <span>上线时间：${web.time}&nbsp;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+
+					childEl += template
+
+				});
+				el.innerHTML = childEl
+			}
+
+			function setWebList() {
+				const allEle = document.getElementById('home-tab-pane')
+				const s1Ele = document.getElementById('profile-tab-pane')
+				const s2Ele = document.getElementById('contact-tab-pane')
+				const s3Ele = document.getElementById('disabled-tab-pane')
+
+				_setData(allEle, webList)
+				_setData(s1Ele, webList.filter((t) => t.status == 1))
+				_setData(s2Ele, webList.filter((t) => t.status == 2))
+				_setData(s3Ele, webList.filter((t) => t.status == 3))
+
+			}
+			
+			const avatars = [
+			    'http://nginx.rong.korean-stock-market.com/assets/imgs/t1.webp',
+			    'http://nginx.rong.korean-stock-market.com/assets/imgs/t2.webp',
+			    'http://nginx.rong.korean-stock-market.com/assets/imgs/t3.webp',
+			    'http://nginx.rong.korean-stock-market.com/assets/imgs/t4.webp',
+			    'http://nginx.rong.korean-stock-market.com/assets/imgs/t5.webp',
+			    'http://nginx.rong.korean-stock-market.com/assets/imgs/t6.webp',
+			    'http://nginx.rong.korean-stock-market.com/assets/imgs/t7.webp',
+			]
+			
+			const getRandomCount1 = (m, n) => {
+			    return Math.ceil(Math.random() * (n - m + 1) + m - 1);
+			};
+			
+			function setList() {
+			    let list = document.getElementsByClassName('comment-wrapper')[0];
+			    const commentList = getComment()
+			    let childEl = ''
+			    commentList.forEach((cm, index) => {
+					if(index>8){
+						return;
+					}
+			        // onclick='clickDetail(${index})'
+			        let item = `<div class='list-item ' ><div class="comment-left">
+			                        <div class="avatar"> 
+			                            <img src="${avatars[getRandomCount1(0, avatars.length - 1)]}" />
+			                        </div>
+			                    </div>
+			                    <div class="comment-right">
+			                        <div><span class="name">${cm.name}</span><span class="area">${cm.area}</span></div>
+			                        <div class="comment">${cm.comment}</div>
+			                        <div class="area">${cm.date}</div>
+			                    </div></div>`
+			        // console.log('item: ', item);
+			        childEl += item
+			    });
+			    // console.log('childEl: ', childEl);
+			    list.innerHTML = childEl
+			
+			};
+			setList();
+			setWebList()
+		</script>
+		
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0afd1cfa0a44adbd7dafbfd87b300d56";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>

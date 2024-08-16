@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>详情</title>
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/main.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/base.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/layer.css">
+    <!-- <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/platform.css"> -->
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/draft.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/mask.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/agent.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/detail.css">
+    <style>
+        @media (max-width: 768px) {
+            .header, .footer{
+                display: none;
+            }
+            
+            
+            .container{
+                padding: 0;
+                margin-top: 0;
+                min-width: 100px!important;
+            }
+        }
+        [v-cloak] {
+            display: none;
+        }
+         .footer {
+            width: 100%;
+            flex-shrink: 0;
+            text-align: center;
+            padding: 0;
+        
+        }
+        .fots {
+            background: #2b343d;
+            padding: 20px 0;
+            color: #b5b5b5;
+        }
+       .fots .wrap {
+            padding: 0 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .fots  .data span {
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+         .data  p {
+                margin-top: 10px;
+                font-size: 12px;
+                line-height: 1.6
+            }
+        .footer .copyright {
+            background: #141D26;
+            color: #fff;
+            padding: 20px 15px;
+            font-size: 12px;
+            line-height: normal;
+        }
+        .footer .copyright p, .footer .copyright p a{
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="header com-header">
+            <div class="com-hd-top">
+                <div class="w1200 clearfix" style="overflow: hidden;">
+                    <!-- nav -->
+                    <div class="nav fl">
+                        <a href="" class="top-go">推荐</a>
+                        <a href="" class="top-go">快讯</a>
+                        <a href="" class="top-go" rel="nofollow">观点</a>
+                        <a href="" class="top-go" rel="nofollow">平台排行</a>
+
+                    </div>
+                    <div class="header-right-wrap">
+                        <div class="login">
+                            <a href="">
+                                登录
+                            </a> /
+                            <a href="">
+                                注册
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="com-hd-search">
+                <div class="w1200 clearfix">
+                    <div class="logo">
+                        <h1
+                            style="background: url('/assets/logo.png') no-repeat center center;background-size: 100% 100%;">
+                            <a href="/">云配查</a>
+                        </h1>
+                    </div>
+
+                    <div class="slogan tc">
+                        <p>云配查一查</p>
+                        <p>投资更安全</p>
+                    </div>
+                    <!-- search -->
+                    <form class="search hd-search fr">
+                        <input type="text" class="search-input" id="searchInput" autocomplete="off" name="keywords"
+                            value="" placeholder="输入平台名、公司名、网址">
+                        <button type="button" class="search-submit-btn">云配查</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div v-cloak>
+            <div class="content w1200" id="content">
+                <div class="place">
+                    位置:
+                    <a href="/">首页</a>
+                    <span>&gt;</span>
+                    查询
+                    <span>&gt;</span>
+                    平台列表
+                    <span>&gt;</span>
+                    <span class="current-place">{{ web.name }}</span>
+                </div>
+                <div class="agent-top">
+                    <div class="agent-top-wrap">
+                        <div class="agent-logo " :class="{'agent-tag-green':web.status == 1,'agent-tag-grey':web.status == 3,'agent-tag-red':web.status == 2}">
+                            <img :src="web.icon" alt="{{ web.name }}">
+                            <div class="agent-logo-label">
+                                <span>{{ statusArray.find(a => a.value ==
+                                            web.status).name }}</span>
+                            </div>
+                        </div>
+                        <div class="agent-top-info">
+                            <div class="agent-main-info">
+                                <div class="agent-name platformName">
+                                    <p class="open-web-site2">
+                                        {{ web.name }} </p>
+                                    <img src="http://nginx.niu.korean-stock-market.com/assets/platform_auth_icon3.png">
+                                </div>
+                                <div class="agent-star">
+                                    <p class="agent-star-label">星级</p>
+                                    <div class="agent-star-img">
+                                        <i class="active"></i>
+                                        <i class="active"></i>
+                                        <i class="active"></i>
+                                        <i class="active"></i>
+                                        <i class=""></i>
+                                    </div>
+                                </div>
+                                <div class="agent-link">
+                                    <div class="follow" data-act_type="platform" data-act_item_id="12793"
+                                        data-act_action="follow">
+                                        <i class="iconfont icon-tianjiaguanzhu"></i><span>关注</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="com-agent-cell">
+                                <div class="com-agent-cell-30 c-line-1">主营业务：A股 美股 港股</div>
+                                <div class="com-agent-cell-30 c-line-1">注册资本：3000万</div>
+                                <div class="com-agent-cell-40 c-line-1">注册地：香港九龙观塘观塘道398号东方中心大厦15楼1507室</div>
+                            </div>
+                            <div class="com-agent-cell">
+                                <div class="com-agent-cell-30 c-line-1">是否实盘：是</div>
+                                <div class="com-agent-cell-30 c-line-1">成立时间：2023年</div>
+                                <div class="com-agent-cell-40 c-line-1">公司名称：{{ web.name }} </div>
+                            </div>
+                            <div class="hover-box">
+                                <div class="hover-box-item">
+                                    <div class="open-web-site" @click="handleCopy(web.url)">
+                                        <img src="http://nginx.niu.korean-stock-market.com/assets/website-1.png" alt="">
+                                        <span>官网</span>
+                                    </div>
+                                    <p  class=" bg-fff">
+                                        {{ web.url }}</p>
+                                </div>
+                                <div class="hover-box-item"  @click="handleCopy(web.url)">
+                                     <div>
+                                          <img src="http://nginx.niu.korean-stock-market.com/assets/website-1.png" alt="">
+                                          <span>立即开户</span>
+                                    </div>
+                                    <p class="bg-blue">--</p>
+                                </div>
+                                <div class="hover-box-item">
+                                    <div>
+                                        <img src="http://nginx.niu.korean-stock-market.com/assets/email-1.png" alt="">
+                                        <span>邮箱</span>
+                                    </div>
+                                    <p class="bg-green">**</p>
+                                </div>
+                                <div class="hover-box-item">
+                                    <div>
+                                        <img src="http://nginx.niu.korean-stock-market.com/assets/address-1.png" alt="">
+                                        <span>地址</span>
+                                    </div>
+                                    <p class="bg-fff">香港九龙观塘观塘道398号东方中心大厦15楼1507室</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="agent-tag-top">
+                    <div class="agent-tag-name">
+                        <span>{{ web.name }}</span><span>的费用信息:</span>
+                    </div>
+                    <div class="agent-tag-box">
+                        <div class="agent-tag-wrap">
+                            <div class="agent-tag-item c119944">
+                                <p>运营状态：</p>
+                                <span>正常运营</span>
+                            </div>
+                            <div class="agent-tag-item c4bc4d7">
+                                <p>运营模式：</p>
+                                <span>实盘</span>
+                            </div>
+                            <div class="agent-tag-item cd4ae46">
+                                <p>利率：</p>
+                                <span>%</span>
+                            </div>
+                        </div>
+                        <div class="agent-tag-wrap">
+                            <div class="agent-tag-item c449de6">
+                                <p>交易品种：</p>
+                                <span>融资融券</span>
+                            </div>
+                            <div class="agent-tag-item c4bc4cf">
+                                <p>倍数：</p>
+                                <span>6-10倍</span>
+                            </div>
+                            <div class="agent-tag-item c9b7dd6">
+                                <p>交易软件：</p>
+                                <span>{{ web.name }} APP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="agent-monitor clearfix">
+                    <div class="fl">
+                        <div class="title"></div>
+                        <div class="desc">监管信息由云配查提供</div>
+                        <div class="btn">查看更多</div>
+                        <div class="monitor-child supervise">
+                            <div class="supervise-wrap">
+                                <!-- warning 红色 success绿色 -->
+                                <div class="supervise-item item-50 success">
+                                    <div class="supervise-status">
+                                        <img src="http://nginx.niu.korean-stock-market.com/assets/business_img.png" alt="">
+                                        <div class="supervise-status-wrap">
+                                            <div class="supervise-status-item">正常开业</div>
+                                        </div>
+                                        <span class="supervise-item-tips">国家企业信用信息公示系统</span>
+                                        <div class="supervise-item-name">工商信息</div>
+                                    </div>
+                                </div>
+                                <div class="supervise-item item-50 success">
+                                    <div class="supervise-status">
+                                        <img src="http://nginx.niu.korean-stock-market.com/assets/icp_img.png" alt="">
+                                        <div class="supervise-status-wrap">
+                                            <div class="supervise-status-item">公司备案</div>
+                                        </div>
+                                        <span class="supervise-item-tips">工业和信息化部政务服务平台</span>
+                                        <div class="supervise-item-name">工信ICP备案</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fr">
+                        <div class="title"></div>
+                        <div class="desc">监管信息由云配查提供</div>
+                        <div class="btn">查看更多</div>
+                        <div class="monitor-child risk">
+                            <div class="risk-item-wrap">
+                                <div class="risk-item">暂无风险！</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+    
+                <div class="tab">
+                    <div class="columns clearfix">
+                        <div class="columns-left">
+                            <div class="impression">
+                                <div class="impression-hd">
+                                    {{ web.name }}——用户点评
+                                </div>
+                                <div class="impression-bd">
+                                    <div class="comprehensive">
+                                        <div class="comprehensive-title">综合评价:</div>
+                                        <div class="comprehensive-tag-wrap">
+                                            <div class="comprehensive-tag-item bg28d959">靠谱</div>
+                                            <div class="comprehensive-tag-item bg28d959">风险低</div>
+                                            <div class="comprehensive-tag-item bg28d959">提现快</div>
+                                            <div class="comprehensive-tag-num"><span>1554</span>人点评</div>
+                                        </div>
+                                    </div>
+                                    <div class="users">
+                                        <div class="users-title">用户点评:</div>
+                                        <div class="users-tag-wrap">
+                                            <div class="users-tag-item">
+                                                <span>安全</span>
+                                                <i>(0)</i>
+                                            </div>
+                                            <div class="users-tag-item">
+                                                <span>靠谱</span>
+                                                <i>(0)</i>
+                                            </div>
+                                            <div class="users-tag-item">
+                                                <span>风险低</span>
+                                                <i>(0)</i>
+                                            </div>
+                                            <div class="users-tag-item">
+                                                <span>提现快</span>
+                                                <i>(0)</i>
+                                            </div>
+                                            <div class="users-tag-item">
+                                                <span>费用低</span>
+                                                <i>(0)</i>
+                                            </div>
+                                            <div class="users-tag-item">
+                                                <span>风险高</span>
+                                                <i>(0)</i>
+                                            </div>
+                                            <div class="users-tag-item">
+                                                <span>费用高</span>
+                                                <i>(0)</i>
+                                            </div>
+                                            <div class="users-tag-item">
+                                                <span>提现慢</span>
+                                                <i>(0)</i>
+                                            </div>
+                                            <div class="users-tag-item">
+                                                <span>系统卡顿</span>
+                                                <i>(0)</i>
+                                            </div>
+                                            <div class="users-tag-item">
+                                                <span>服务差</span>
+                                                <i>(0)</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-hd">
+                                <!-- 如果数量为0  则为span加上class c000 否则 加上class cred-->
+                                <a href="javascript:void(0);" class="active">用户评论<span class="cred">(0)</span></a>
+                                <a href="javascript:void(0);">平台舆论<span class="">(0)</span></a>
+                                <a href="javascript:void(0);">实时动态<span class="">(0)</span></a>
+                                <a href="javascript:void(0);">投诉处理<span class="">(0)</span></a>
+                            </div>
+                            <div class="tab-bd">
+                                <!-- 用户评论 -->
+                                <div class="comment">
+                                    <div class="impression-check">
+                                        <div class="impression-check-title">用户点评：</div>
+                                        <div class="impression-check-item-wrap">
+                                            <div class="impression-check-item">
+                                                安全 <input type="checkbox" name="tag" value="1">
+                                            </div>
+                                            <div class="impression-check-item">
+                                                靠谱 <input type="checkbox" name="tag" value="2">
+                                            </div>
+                                            <div class="impression-check-item">
+                                                风险低 <input type="checkbox" name="tag" value="3">
+                                            </div>
+                                            <div class="impression-check-item">
+                                                提现快 <input type="checkbox" name="tag" value="4">
+                                            </div>
+                                            <div class="impression-check-item">
+                                                费用低 <input type="checkbox" name="tag" value="5">
+                                            </div>
+                                            <div class="impression-check-item">
+                                                风险高 <input type="checkbox" name="tag" value="6">
+                                            </div>
+                                            <div class="impression-check-item">
+                                                费用高 <input type="checkbox" name="tag" value="7">
+                                            </div>
+                                            <div class="impression-check-item">
+                                                提现慢 <input type="checkbox" name="tag" value="8">
+                                            </div>
+                                            <div class="impression-check-item">
+                                                系统卡顿 <input type="checkbox" name="tag" value="9">
+                                            </div>
+                                            <div class="impression-check-item">
+                                                服务差 <input type="checkbox" name="tag" value="10">
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="output-comment">
+                                        <div class="user">
+                                            <img src="http://nginx.niu.korean-stock-market.com/assets/user-default-head-pic.png"
+                                                class="user-avatar">
+                                            <div class="user-name">游客</div>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <textarea name="content" id="content_a" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <input type="text" hidden="" id="company_id " value="2051">
+                                        <div class="output-bottom">
+                                            <button class="submit-btn comment-submit-btn" data-type="platform"
+                                                data-item_id="2051">
+                                                发表
+                                            </button>
+                                        </div>
+                                        <div class="img-list">
+                                        </div>
+                                    </div>
+                                    <div class="comment-wrapper">
+                        <div v-for="(cm, ix) in commentList" class="comment-list">
+                            <div class="comment-left">
+                                <div class="avatar" v-html="getAvatar()"></div>
+                            </div>
+                            <div class="comment-right">
+                                <div><span class="name">{{ cm.name }}</span><span class="area">{{ cm.area }}</span></div>
+                                <div class="comment">{{ cm.comment }}</div>
+                                <div class="date">{{ cm.date }}</div>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="comment-bd">
+                                        <div class="com-loading-more comment-loading-more" data-page="1" data-item_id="2051"
+                                            data-type="platform">
+                                            查看更多
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <!-- 平台舆论 -->
+                                <div class="answer hide">
+                                    <div class="draft-bd">
+                                        <div class="draft-nothing">
+                                            暂无内容
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 实时动态 -->
+                                <div class="dynamic hide">
+                                    <div class="draft-bd">
+                                        <div class="draft-nothing">
+                                            暂无内容
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <!-- 投诉处理 -->
+                                <div class="complaint hide complaint-handling">
+                                    <div class="draft-bd">
+                                        <div class="draft-nothing">
+                                            暂无内容
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns-right">
+                            <ul class="tool">
+                                <li class="tool-item">
+                                    <!--                            <a href="javascript:void(0);" data-agent="{{ web.name }} " class="open-complaint">-->
+                                    <img src="http://nginx.niu.korean-stock-market.com/assets/agent_tool_icon1.png">
+                                    <p>我要投诉</p>
+                                    <!--                            </a>-->
+                                </li>
+                                <li class="tool-item">
+                                    <!--                            <a href="javascript:void(0);" class="release-exposure open-exposure">-->
+                                    <img src="http://nginx.niu.korean-stock-market.com/assets/agent_tool_icon2.png">
+                                    <p>我要曝光</p>
+                                    <!--                            </a>-->
+                                </li>
+                            </ul>
+                            <div class="notice-wrap">
+                                <div class="notice-hd">{{web.name}}舆情</div>
+                                <div class="notice-bd">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div id="__nuxt"><!---->
+            <div id="__layout">
+                <div class="site-main">
+                    <div class="top-search-box" data-v-049fd1b8="">
+                        <div class="top-search" data-v-049fd1b8="">
+                            <img src="http://nginx.niu.korean-stock-market.com/assets/back.9ff2b05.png" alt="" data-v-049fd1b8="" onclick="history.back()">
+                            <a href="javascript:;" data-v-049fd1b8="">
+                                <form action="" data-v-049fd1b8="">
+                                    <input type="text" placeholder="输入平台名称，公司名称，网址" data-v-049fd1b8="" id="search-value">
+                                    <img src="http://nginx.niu.korean-stock-market.com/assets/search-icon.27a25c3.png" alt="" data-v-049fd1b8="" class="search-btn"
+                                        >
+                                </form>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="container" data-v-550410ae="">
+                        <div class="box" data-v-550410ae="">
+                            <div class="info-box" data-v-0fa4d74a="" data-v-550410ae="">
+                                <div class="info-top" data-v-0fa4d74a="">
+                                    <div class="agent-img " :class="{'agent-tag-green':web.status == 1,'agent-tag-grey':web.status == 3,'agent-tag-red':web.status == 2}" data-v-0fa4d74a="">
+                                        <img :src="web.icon"  alt="" data-v-0fa4d74a="">
+                                        <span class="color-text" data-v-0fa4d74a="">{{
+            statusArray.find((a) => a.value == web.status).name
+        }}</span>
+                                    </div>
+                                    <div class="info-top-right" data-v-0fa4d74a="">
+                                        <div class="agent-name" data-v-0fa4d74a="">
+                                            <div class="agent-name-left" data-v-0fa4d74a="">
+                                                <h3 class="t-line-1" data-v-0fa4d74a="">
+                                                    {{web.name}} </h3>
+                                            </div>
+                                            <!--                  <div class="is-follow" data-v-0fa4d74a="">-->
+                                            <!--                    + 关注-->
+                                            <!--                  </div>-->
+                                        </div>
+                                        <div class="main-business" data-v-0fa4d74a="">
+                                            主营业务：<span class="t-line-1" data-v-0fa4d74a="">A股 美股 港股</span></div>
+                                        <div class="agent-level" data-v-0fa4d74a="">
+                                            星级<p data-v-0fa4d74a="">
+                                                <img src="http://nginx.niu.korean-stock-market.com/assets/star.f7b3749.png" data-v-0fa4d74a="">
+                                                <img src="http://nginx.niu.korean-stock-market.com/assets/star.f7b3749.png" data-v-0fa4d74a="">
+                                                <img src="http://nginx.niu.korean-stock-market.com/assets/star.f7b3749.png" data-v-0fa4d74a="">
+                                                <img src="http://nginx.niu.korean-stock-market.com/assets/star.f7b3749.png" data-v-0fa4d74a="">
+                                                <img src="http://nginx.niu.korean-stock-market.com/assets/no-star.aa2ebf4.png" data-v-0fa4d74a="">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info-msg" data-v-0fa4d74a="">
+                                    <div class="info-msg-top" data-v-0fa4d74a="">
+                                        <div data-v-0fa4d74a="">
+                                            <p class="t-line-1" data-v-0fa4d74a="">
+                                                中国香港
+                                            </p>
+                                            <p data-v-0fa4d74a="">注册地</p>
+                                        </div>
+                                        <div data-v-0fa4d74a="">
+                                            <p class="t-line-1" data-v-0fa4d74a="">
+                                                5000千万 </p>
+                                            <p data-v-0fa4d74a="">注册资本</p>
+                                        </div>
+                                        <div data-v-0fa4d74a="">
+                                            <p class="t-line-1" data-v-0fa4d74a="">
+                                            </p>
+                                            <p data-v-0fa4d74a="">成立时间：2023</p>
+                                        </div>
+                                    </div>
+                                    <div class="info-msg-bottom" data-v-0fa4d74a="">
+                                        <!--                <div data-v-0fa4d74a=""><img src="/static/mobile/picture/phone.3ea393e.png" alt=""-->
+                                        <!--                                             data-v-0fa4d74a=""> <span class="t-line-1"-->
+                                        <!--                                                                       data-v-0fa4d74a="">-&#45;&#45;</span>-->
+                                        <!--                </div>-->
+                                        <!--                <div data-v-0fa4d74a=""><img src="/static/mobile/picture/email.e301fd9.png" alt=""-->
+                                        <!--                                             data-v-0fa4d74a=""> <span class="t-line-1"-->
+                                        <!--                                                                       data-v-0fa4d74a="">***</span>-->
+                                        <!--                </div>-->
+                                        <div class="go-url-box" data-v-0fa4d74a="">
+                                            <img src="http://nginx.niu.korean-stock-market.com/assets/net-address.0af0cd0.png" alt="" data-v-0fa4d74a="">
+                                            <span class="t-line-1" data-v-0fa4d74a=""><a
+                                                :href="web.url">{{web.url}}</a></span>
+                                            <a :href="web.url" data-v-0fa4d74a="">
+                                                官方网址
+                                            </a>
+                                            <!---->
+                                        </div>
+                                        <div data-v-0fa4d74a=""><img src="http://nginx.niu.korean-stock-market.com/assets/address.eff3581.png" alt=""
+                                                data-v-0fa4d74a=""> <span class="t-line-1"
+                                                data-v-0fa4d74a="">香港九龙观塘观塘道398号东方中心大厦15楼1507室</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cost-info" data-v-17ada08e="" data-v-550410ae="">
+                                <h3 data-v-17ada08e="">
+                                    费用信息</h3>
+                                <ul class="info-box" data-v-17ada08e="">
+                                    <li data-v-17ada08e="">运营状态：<span data-v-17ada08e="">正常运营</span></li>
+                                    <li data-v-17ada08e="">运营模式：<span data-v-17ada08e="">实盘</span></li>
+                                    <li data-v-17ada08e="">交易软件：<span data-v-17ada08e="">{{ web.name }} APP</span></li>
+                                    <li data-v-17ada08e="">利率：<span data-v-17ada08e="">0.06%-1%</span></li>
+                                    <li data-v-17ada08e="">倍数：<span data-v-17ada08e="">6-10</span></li>
+                                    <li data-v-17ada08e="">交易品种：<span data-v-17ada08e="">融资融券</span></li>
+                                </ul>
+                            </div>
+                            <div class="risk-control-box" data-v-fdebd2a0="" data-v-550410ae="">
+                                <a href="javascript:;" data-v-fdebd2a0="">
+                                    <div class="risk-control-left" data-v-fdebd2a0="">
+                                        <p data-v-fdebd2a0="">风险监控</p>
+                                        <span data-v-fdebd2a0="">暂无风险</span> <!---->
+                                    </div>
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAwCAYAAAACYxrZAAADn0lEQVRYR9XYT2gUVxwH8O9vE8FKjz14b4/SigT2bUjWzKxaEIPZN5IaUE+1pVRbLQhSapvWQ1sQFP+A1F4qKP7LLiqC1c5MaGt2RooUhZ4qRSn1ZlHbRkiyvzKTzbLzdic7u/NycA8Jmwzfz7w37/ebeUMlx2PUPgScL5pi68L3pfhNjWANmCwaWZOI6ieiE6aSWymBqaiE/jpL04OjhvGPTizIouBHyfZPgfjtxnAG/pib6x0aXd/3UCcagiHqeJ8D+FQJf8bMQ1Yhd0cXWgeDwAnb20OEw2o4ERtFIzepA42ANXQ7EU6r4cwkrUK2nBZtAoPAS47/ZgZ8vWmkTLuLhezxNGhLcH6klTVE9BOAFRGAeL80cl93i8aCQeBld+q1Oc4E6MooijFpiHPdoIuCQeBV95dXZnjGBWhVpGwYe62CONIp2hYMAsfHOfP6Wn8SjEGlVr+0TPFxJ2gisF6rduUqiDYp1/SkNHLvJUU7AoPQsuOdZmB7FKAL0sy+lQTtGAy7kuvdAGO9AiRq+l2BIWp7F0HYoqB3lz/H4MaN4mncaLsGQ9TxgibwvhL+gAkDliH+bIWmAsMG4XgHCPhCCX9SrSK/ZZ2429StklzodsdM2JXdRHRUOY6J2FSbfuoRLiBl2x9j4rPqyalNXxsYTu8PnkEZ2As39gWcgHeLpvgm+K4VDOvUvb2auRr035cjo2XskwVxSDsYIBempl5a9jzzIwN9jag0Bb34YMnx3wD456Yprd1HtY4wbtEw8U7LyH2rddHElQWAEWmKyw0rtl1Zt/9/2fZ3MfEx5chZEAxpiGB665/UU1q2K58w0UEF+ztTxcDIOvGb1tbWunnT/Z7ZmfzmDQN/aW3eMben28v+7TWGh/v+03p7Kjne9wA2REIJN6Uhon9roXZ8DUuO9x2AHdEsOiPN7Lb2y6vDXjrh+leIeTgazIelmfsoCZa4DsPHxLzvAsgrwZ9JU6g330XttlMa9yAMwi5piBNJR5ao8Mv2rVeZeoLCjTzqp9lJdbyZ4S4f8RcdYdx2DczvyELuVKfTuGhrm7C91htS0CbLzF5LgzWt0rLrfcgMdUdUZXDeMnO30mIRMOalwuNMT3VoZG3/PR1YHSw5XvBEtbMxlIHf0dubt/J9j3RhIRjzYujO7PLqwGh//7RObB5seNdWC3ekKQq6oXpZREDGOVkQY0uFRUZIoGNFM/vBUmLzoO1/BVTvpy3opCf6P7fkVUDG6eC7AAAAAElFTkSuQmCC"
+                                        alt="" data-v-fdebd2a0="">
+                                </a>
+                                <a href="javascript:;" data-v-fdebd2a0="">
+                                    <div class="risk-control-left" data-v-fdebd2a0="">
+                                        <p data-v-fdebd2a0="">监管信息</p>
+                                        <span ata-v-fdebd2a0="" style="color: grey;
+        font-size: .32rem;
+        font-weight: 500;
+        margin-left: 0.266667rem;">监管信息查询</span>
+                                    </div>
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAwCAYAAAACYxrZAAADn0lEQVRYR9XYT2gUVxwH8O9vE8FKjz14b4/SigT2bUjWzKxaEIPZN5IaUE+1pVRbLQhSapvWQ1sQFP+A1F4qKP7LLiqC1c5MaGt2RooUhZ4qRSn1ZlHbRkiyvzKTzbLzdic7u/NycA8Jmwzfz7w37/ebeUMlx2PUPgScL5pi68L3pfhNjWANmCwaWZOI6ieiE6aSWymBqaiE/jpL04OjhvGPTizIouBHyfZPgfjtxnAG/pib6x0aXd/3UCcagiHqeJ8D+FQJf8bMQ1Yhd0cXWgeDwAnb20OEw2o4ERtFIzepA42ANXQ7EU6r4cwkrUK2nBZtAoPAS47/ZgZ8vWmkTLuLhezxNGhLcH6klTVE9BOAFRGAeL80cl93i8aCQeBld+q1Oc4E6MooijFpiHPdoIuCQeBV95dXZnjGBWhVpGwYe62CONIp2hYMAsfHOfP6Wn8SjEGlVr+0TPFxJ2gisF6rduUqiDYp1/SkNHLvJUU7AoPQsuOdZmB7FKAL0sy+lQTtGAy7kuvdAGO9AiRq+l2BIWp7F0HYoqB3lz/H4MaN4mncaLsGQ9TxgibwvhL+gAkDliH+bIWmAsMG4XgHCPhCCX9SrSK/ZZ2429StklzodsdM2JXdRHRUOY6J2FSbfuoRLiBl2x9j4rPqyalNXxsYTu8PnkEZ2As39gWcgHeLpvgm+K4VDOvUvb2auRr035cjo2XskwVxSDsYIBempl5a9jzzIwN9jag0Bb34YMnx3wD456Yprd1HtY4wbtEw8U7LyH2rddHElQWAEWmKyw0rtl1Zt/9/2fZ3MfEx5chZEAxpiGB665/UU1q2K58w0UEF+ztTxcDIOvGb1tbWunnT/Z7ZmfzmDQN/aW3eMben28v+7TWGh/v+03p7Kjne9wA2REIJN6Uhon9roXZ8DUuO9x2AHdEsOiPN7Lb2y6vDXjrh+leIeTgazIelmfsoCZa4DsPHxLzvAsgrwZ9JU6g330XttlMa9yAMwi5piBNJR5ao8Mv2rVeZeoLCjTzqp9lJdbyZ4S4f8RcdYdx2DczvyELuVKfTuGhrm7C91htS0CbLzF5LgzWt0rLrfcgMdUdUZXDeMnO30mIRMOalwuNMT3VoZG3/PR1YHSw5XvBEtbMxlIHf0dubt/J9j3RhIRjzYujO7PLqwGh//7RObB5seNdWC3ekKQq6oXpZREDGOVkQY0uFRUZIoGNFM/vBUmLzoO1/BVTvpy3opCf6P7fkVUDG6eC7AAAAAElFTkSuQmCC"
+                                        alt="" data-v-fdebd2a0="">
+                                </a>
+                            </div>
+                            <div class="icon-tab-box" data-v-6b37d438="" data-v-550410ae=""><a href="javascript:;"
+                                    data-v-6b37d438="">
+                                    <div data-v-6b37d438=""><img src="http://nginx.niu.korean-stock-market.com/assets/qyxx.3c029f4.png" alt="" data-v-6b37d438="">
+                                    </div>
+                                    <p data-v-6b37d438="">企业信息</p>
+                                </a><a href="javascript:;" data-v-6b37d438="">
+                                    <div data-v-6b37d438=""><img src="http://nginx.niu.korean-stock-market.com/assets/jyzt.00b76c6.png" alt="" data-v-6b37d438="">
+                                    </div>
+                                    <p data-v-6b37d438="">经营状态</p>
+                                </a><a href="javascript:;" data-v-6b37d438="">
+                                    <div data-v-6b37d438=""><img src="http://nginx.niu.korean-stock-market.com/assets/ptjj.2dd7e0c.png" alt="" data-v-6b37d438="">
+                                    </div>
+                                    <p data-v-6b37d438="">平台简介</p>
+                                </a><a href="javascript:;" data-v-6b37d438="">
+                                    <div data-v-6b37d438=""><img src="http://nginx.niu.korean-stock-market.com/assets/ICP.1dccd29.png" alt="" data-v-6b37d438="">
+                                    </div>
+                                    <p data-v-6b37d438="">工信备案</p>
+                                </a><a data-v-6b37d438="">
+                                    <div data-v-6b37d438=""><img src="http://nginx.niu.korean-stock-market.com/assets/tgyh.de95756.png" alt="" data-v-6b37d438="">
+                                    </div>
+                                    <p data-v-6b37d438="">托管银行</p>
+                                </a><a href="javascript:;" data-v-6b37d438="">
+                                    <div data-v-6b37d438=""><img src="http://nginx.niu.korean-stock-market.com/assets/cpxx.20d9270.png" alt="" data-v-6b37d438="">
+                                    </div>
+                                    <p data-v-6b37d438="">产品信息</p>
+                                </a><a href="javascript:;" data-v-6b37d438="">
+                                    <div data-v-6b37d438=""><img src="http://nginx.niu.korean-stock-market.com/assets/jgzz.b86ef29.png" alt="" data-v-6b37d438="">
+                                    </div>
+                                    <p data-v-6b37d438="">监管资质</p>
+                                </a><a data-v-6b37d438="">
+                                    <div data-v-6b37d438=""><img src="http://nginx.niu.korean-stock-market.com/assets/qyhx.5d1d6ec.png" alt="" data-v-6b37d438="">
+                                    </div>
+                                    <p data-v-6b37d438="">企业画像</p>
+                                </a></div>
+                            <div class="comment-area" data-v-3e2ea19e="" data-v-550410ae="">
+                                <h3 class="comment-area-title" data-v-3e2ea19e="">
+                                    用户点评
+                                </h3>
+                                <div class="comment-tab" data-v-3e2ea19e="">
+                                    <div class="van-tabs van-tabs--line" data-v-3e2ea19e="">
+                                        <div class="van-tabs__wrap">
+                                            <div role="tablist" class="van-tabs__nav van-tabs__nav--line">
+                                                <div role="tab" class="van-tab van-tab--active" aria-selected="true"><span
+                                                        class="van-tab__text van-tab__text--ellipsis">用户评论</span>
+                                                </div>
+                                                <div role="tab" class="van-tab"><span
+                                                        class="van-tab__text van-tab__text--ellipsis">平台舆论</span>
+                                                </div>
+                                                <div role="tab" class="van-tab"><span
+                                                        class="van-tab__text van-tab__text--ellipsis">实时动态</span>
+                                                </div>
+                                                <div role="tab" class="van-tab"><span
+                                                        class="van-tab__text van-tab__text--ellipsis">投诉处理</span>
+                                                </div>
+                                                <div class="van-tabs__line"
+                                                    style="transform: translateX(49px) translateX(-50%); transition-duration: 0.3s;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="van-tabs__content van-tabs__content--animated">
+                                            <div class="van-tabs__track"
+                                                style="transform: translate3d(0%, 0px, 0px); transition-duration: 0.3s;">
+                                                <div role="tabpanel" class="van-tab__pane-wrapper" data-v-3e2ea19e="">
+                                                    <div class="van-tab__pane">
+                                                        <div data-v-52fd9b1c="" data-v-3e2ea19e="" class="agent-comment">
+                                                            <div data-v-52fd9b1c="" class="review-box">
+                                                                <div data-v-52fd9b1c="" class="evaluation">
+                                                                    <p data-v-52fd9b1c="">综合评价：</p>
+                                                                    <div data-v-52fd9b1c=""><span
+                                                                            data-v-52fd9b1c="">靠谱</span><span
+                                                                            data-v-52fd9b1c="">提现快</span><span
+                                                                            data-v-52fd9b1c="">风险低</span></div>
+                                                                    <p data-v-52fd9b1c=""><span
+                                                                            data-v-52fd9b1c="">356</span>人点评
+                                                                    </p>
+                                                                </div>
+                                                                <div data-v-52fd9b1c="" class="review">
+                                                                    <p data-v-52fd9b1c="">用户点评：</p>
+                                                                    <ul data-v-52fd9b1c="">
+                                                                        <li data-v-52fd9b1c=""><span
+                                                                                data-v-52fd9b1c="">安全</span>
+                                                                            <p data-v-52fd9b1c="">(122)</p>
+                                                                        </li>
+                                                                        <li data-v-52fd9b1c=""><span
+                                                                                data-v-52fd9b1c="">靠谱</span>
+                                                                            <p data-v-52fd9b1c="">(222)</p>
+                                                                        </li>
+                                                                        <li data-v-52fd9b1c=""><span
+                                                                                data-v-52fd9b1c="">风险低</span>
+                                                                            <p data-v-52fd9b1c="">(144)</p>
+                                                                        </li>
+                                                                        <li data-v-52fd9b1c=""><span
+                                                                                data-v-52fd9b1c="">提现快</span>
+                                                                            <p data-v-52fd9b1c="">(159)</p>
+                                                                        </li>
+                                                                        <li data-v-52fd9b1c=""><span
+                                                                                data-v-52fd9b1c="">费用低</span>
+                                                                            <p data-v-52fd9b1c="">(96)</p>
+                                                                        </li>
+                                                                        <li data-v-52fd9b1c=""><span
+                                                                                data-v-52fd9b1c="">风险高</span>
+                                                                            <p data-v-52fd9b1c="">(0)</p>
+                                                                        </li>
+                                                                        <li data-v-52fd9b1c=""><span
+                                                                                data-v-52fd9b1c="">费用高</span>
+                                                                            <p data-v-52fd9b1c="">(0)</p>
+                                                                        </li>
+                                                                        <li data-v-52fd9b1c=""><span
+                                                                                data-v-52fd9b1c="">提现慢</span>
+                                                                            <p data-v-52fd9b1c="">(0)</p>
+                                                                        </li>
+                                                                        <li data-v-52fd9b1c=""><span
+                                                                                data-v-52fd9b1c="">系统卡顿</span>
+                                                                            <p data-v-52fd9b1c="">(0)</p>
+                                                                        </li>
+                                                                        <li data-v-52fd9b1c=""><span
+                                                                                data-v-52fd9b1c="">服务差</span>
+                                                                            <p data-v-52fd9b1c="">(0)</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-52fd9b1c="" class="comment-box"><!---->
+                                                                <div data-v-52fd9b1c="" class="main-comment-list">
+                         <!--                                 <div v-for="(cm, ix) in commentList" class="comment-list">
+						                            <div class="comment-left">
+						                                <div class="avatar" v-html="getAvatar()"></div>
+						                            </div>
+						                            <div class="comment-right">
+						                                <div><span class="name">{{ cm.name }}</span><span class="area">{{ cm.area }}</span></div>
+						                                <div class="comment">{{ cm.comment }}</div>
+						                                <div class="date">{{ cm.date }}</div>
+						                            </div>
+						                        </div>-->
+                                                                </div>
+                                                            </div> <!---->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div role="tabpanel"
+                                                    class="van-tab__pane-wrapper van-tab__pane-wrapper--inactive"
+                                                    data-v-3e2ea19e="" aria-hidden="true">
+                                                    <div class="van-tab__pane">
+                                                        <div data-v-10fb120c="" data-v-3e2ea19e="" class="question-box">
+                                                            <div data-v-10fb120c="" class="question-list"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div role="tabpanel"
+                                                    class="van-tab__pane-wrapper van-tab__pane-wrapper--inactive"
+                                                    data-v-3e2ea19e="" aria-hidden="true">
+                                                    <div class="van-tab__pane">
+                                                        <div data-v-f4c3a118="" data-v-3e2ea19e="" class="dynamic-box">
+                                                            <div data-v-f4c3a118="" class="dynamic-list"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div role="tabpanel"
+                                                    class="van-tab__pane-wrapper van-tab__pane-wrapper--inactive"
+                                                    data-v-3e2ea19e="" aria-hidden="true">
+                                                    <div class="van-tab__pane">
+                                                        <div data-v-597b90b6="" data-v-3e2ea19e="" class="complaints-box">
+                                                            <div data-v-597b90b6="" class="complaints-list"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-bar" data-v-afbca736="" data-v-550410ae="">
+                                <div class="tab-show" data-v-afbca736="">
+                                    <div class="tab-item" data-v-afbca736=""><img src="http://nginx.niu.korean-stock-market.com/assets/back-to-top.4f7c7fe.png"
+                                            data-v-afbca736=""> <!----></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+       <div class="footer">
+            <div class="fots">
+                <div class="wrap">
+                    <div class="data">
+                        <p>数据来源:
+                            <span>全国企业信用信息公示系统</span>
+                            <span>中国裁判文书网</span>
+                            <span>中国执行信息公开网</span>
+                            <span>国家知识产权局</span>
+                            <span>商标局</span>
+                            <span>版权局</span>
+                        </p>
+                        <p>
+                            风险声明：
+                            任何投资都具备高风险，投资需谨慎，更需要合法。云配查网站数据，及云配查网站内所有用户提供的所有信息，供用户免费查询，但仅作为参考与研究用途。
+                            不构成对任何用户的投资建议，云配查不做任何推荐，用户需自行承担投资风险。版权所有，转载请注明来源。市场有风险，投资需谨慎。
+
+                        </p>
+                         </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="one">
+                    <a href="/"><span>关于我们</span></a>
+                    <a href="/"><span>联系方式</span></a>
+                    <a href="/"><span>用户协议</span></a>
+                    <a href="/"><span>免责声明</span></a>
+                </p>
+                 <p class="two">版权所有：云配查科技有限公司 @ 云配查 &nbsp;&nbsp;电话：16521134445 &nbsp;&nbsp; 邮箱：g13227532388@gmail.com</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        !function (e, t) {
+            function n() {
+                var e = d.clientWidth / 10;
+                d.style.fontSize = e + "px"
+            }
+
+            var d = t.documentElement, i = e.devicePixelRatio || 1;
+            if (function e() {
+                t.body ? t.body.style.fontSize = 12 * i + "px" : t.addEventListener("DOMContentLoaded", e)
+            }(), n(), e.addEventListener("resize", n), e.addEventListener("pageshow", (function (e) {
+                e.persisted && n()
+            })), i >= 2) {
+                var o = t.createElement("body"), a = t.createElement("div");
+                a.style.border = ".5px solid transparent", o.appendChild(a), d.appendChild(o), 1 === a.offsetHeight && d.classList.add("hairlines"), d.removeChild(o)
+            }
+        }(window, document)
+        window.addEventListener('resize', function () {
+            // 当窗口大小变化时，刷新页面
+            location.reload();
+        });
+    </script>
+    <script src="http://nginx.niu.korean-stock-market.com/assets/multiavatar.js"></script>
+    <script src="http://nginx.niu.korean-stock-market.com/assets/vue.js"></script>
+    <script>
+        const comments = [
+            `有这个平台帮助监督验证 用起来非常放心了`,
+            `平台体验好，充值方便，收入信息一目了然，提现快。值得推荐的一个好平台。`,
+            `抄底翻盘好软件 要不然就没机会翻盘了`,
+            `验过了，是实的，用着很流畅不卡顿`,
+            `一共下载了五款软件，这个算是最好用的了，充值方便，体现快，特别棒！`,
+            `不得不吐槽现在垃圾平台很多，能遇到这么好的平台j监测验证太难了，且用且珍惜~`,
+            `很相信这个平台的口碑排名，用了这么久没出现过什么卡顿的，我评论的这个是我认为目前用了那么多最好用的平台之一。`,
+            `看了验证记录，也下载了软件，用起来确实挺好的，是实盘，沟通起来无障碍，操作都很方便！`,
+            `作为老油条，下载了不少工具，用下来能够留存在手机上的不多，这个算是留得住的，主要是客服的响应及时，服务的态度非常的好，而且App用起来都差不多的，能够突出的优势就是响应速度和客服服务了，这点做的很好。`,
+            `这个软件用着不错  资金安全可靠，推荐朋友测试了都说还可以 一直在用 `,
+            `安全可靠，用起来顺畅稳定，可控，而且客服的服务也是非常的及时的`,
+            `犹豫挺长一段时间的，直遇到这家平台，操作简单，很有诚信，的确是一家挺好的平台。`,
+            `值得放心使用的正规平台，而且还有很多活动，没想到还能这样在大A进行操作`,
+            `现在这个行情，能用到这款软件，真的是很好的体验啊，懂得都懂我说什么！`,
+            `个人感觉是个值得信赖的实盘，处理事情的方式很优秀`,
+            `确定是实盘 都让客服给我发L2的交割单了`,
+            `软件很顺畅，抓板很及时，客服态度也很NICE，推介给希望抄底的朋友！`,
+            `用了将近半年了，APP一直都不用更新，比我以前用的那种一段时间就要更新的好用多了。`,
+            `非常喜欢的，股票软件，简单易用充值方便，提现快，平台体验好，上手效果非常棒！`,
+            `最近刚注意到这个平台，设计风格很清新，操作方式很方便，主要是客服也都很专业及时，尤其是在波动时候的温馨提示，会让我觉得有一丝感动，非常好的平台。`,
+            `原来这才是工具的妙用，有确定性的判断了之后，用这个软件才能够让我的所得超出预期啊！太棒了`,
+            `有这个平台帮助监督验证 用起来非常放心了`,
+            `进去了 有体验测试  先试试就知道了 `,
+            `有活动 可以先体验`,
+            `很多时候一个好工具带来的效率的提升和结果的呈现远远比不靠谱的所谓利好要来的实在的多，我很喜欢用这个工具，尽管有一些不好的地方，但是稳定可靠很及时。`,
+        ];
+
+        const area = [
+            "北京市-北京市",
+            "上海市-上海市",
+            "天津市-天津市",
+            "重庆市-重庆市",
+            "河北省-石家庄市",
+            "河南省-郑州市",
+            "辽宁省-沈阳市",
+            "吉林省-长春市",
+            "黑龙江省-哈尔滨市",
+            "江苏省-南京市",
+            "浙江省-杭州市",
+            "安徽省-合肥市",
+            "福建省-福州市",
+            "江西省-南昌市",
+            "山东省-济南市",
+            "湖北省-武汉市",
+            "湖南省-长沙市",
+            "广东省-广州市",
+            "四川省-成都市",
+            "贵州省-贵阳市",
+            "云南省-昆明市",
+            "陕西省-西安市",
+            "甘肃省-兰州市",
+            "青海省-西宁市",
+            "广西壮族自治区-南宁市",
+            "内蒙古自治区-呼和浩特市",
+            "宁夏回族自治区-银川市",
+            "新疆维吾尔自治区-乌鲁木齐市",
+            "海南省-海口市",
+            "西藏自治区-拉萨市",
+        ];
+
+        const getRandomCount = (m, n) => {
+            return Math.ceil(Math.random() * (n - m + 1) + m - 1);
+        };
+
+        function generateRandomDate() {
+            const start = new Date(2020, 0, 1);
+            const end = new Date();
+            const randomDate = new Date(
+                start.getTime() + Math.random() * (end.getTime() - start.getTime())
+            );
+            return randomDate.toISOString().split("T")[0];
+        }
+
+        // 获取指定范围内的随机数
+        function randomAccess(min, max) {
+            return Math.floor(Math.random() * (min - max) + max);
+        }
+
+        // 解码
+        function decodeUnicode(str) {
+            //Unicode显示方式是\u4e00
+            str = "\\u" + str;
+            str = str.replace(/\\/g, "%");
+            //转换中文
+            str = unescape(str);
+            //将其他受影响的转换回原来
+            str = str.replace(/%/g, "\\");
+            return str;
+        }
+
+        function getRandomName(len) {
+            let name = "";
+            for (let i = 0; i < len; i++) {
+                let unicodeNum = "";
+                unicodeNum = randomAccess(0x4e00, 0x9fa5).toString(16);
+                name += decodeUnicode(unicodeNum);
+            }
+            return name;
+        }
+
+        const getComment = () => {
+            let data = [];
+            let count = (new Date().getTime() % 100) + 30;
+
+            for (let i = 0; i < count; i++) {
+                data[i] = {
+                    comment: comments[getRandomCount(1, comments.length)],
+                    area: area[getRandomCount(1, area.length)],
+                    date: generateRandomDate(),
+                    name: getRandomName(getRandomCount(3, 7)),
+                };
+            }
+            return data;
+        };
+        var chw = 'http://nginx.niu.korean-stock-market.com/assets/images/chw.png'
+        var jcw = 'http://nginx.niu.korean-stock-market.com/assets/images/jcw.png'
+        var jww = 'http://nginx.niu.korean-stock-market.com/assets/images/jww.png'
+        var xsw = 'http://nginx.niu.korean-stock-market.com/assets/images/xsw.png'
+        var qtw = 'http://nginx.niu.korean-stock-market.com/assets/images/qtw.png'
+        var ymw = 'http://nginx.niu.korean-stock-market.com/assets/images/ymw.png'
+        var hzw = 'http://nginx.niu.korean-stock-market.com/assets/images/hzw.png'
+        var qdcf = 'http://nginx.niu.korean-stock-market.com/assets/images/qdcf.jpg'
+        var nycf = 'http://nginx.niu.korean-stock-market.com/assets/images/nycf.jpg'
+        var dbr = 'http://nginx.niu.korean-stock-market.com/assets/images/dbr.jpg'
+        var ncel = 'http://nginx.niu.korean-stock-market.com/assets/images/ncel.png'
+        new Vue({
+            el: '#app',
+            data: {
+                statusArray: [
+                    { name: "已验证", value: 1 },
+                    { name: "停业", value: 2 },
+                    { name: "待验证", value: 3 },
+                ],
+                webList: [
+                    {
+                        name: "牛策略",
+                        icon: ncel,
+                        id: 4,
+                        desc: "新一代互联网券商，多种交易选择美股，港股，A股，国内国际期货，股指期货和国际外汇零门槛开户，资金三方监管，安全快捷，以领先技术与极致服务，变革投资体验。全球交易，牛策略与你相伴！",
+                        time: "2015-10-09",
+                        star: 4,
+                        remark: "实盘交易",
+                        area: '香港牛策略有限公司公司版',
+                        url: "https://www.ncl888.com/",
+                        status: 1, //1 正常 2 停业 3: 待验证
+                    },
+                    {
+                        name: "阳美网",
+                        icon: ymw,
+                        id: 2,
+                        desc: "",
+                        time: "2023-10-09",
+                        star: 2,
+                        remark: "实盘交易",
+                        area: '浙江省/杭州市',
+                        url: "https://www.ncl888.com/",
+                        status: 1,
+                    },
+                    {
+                        name: "嘉旺网",
+                        icon: jww,
+                        id: 3,
+                        desc: "",
+                        time: "2023-10-09",
+                        star: 2,
+                        remark: "实盘交易",
+                        area: '广东省/佛山市',
+                        url: "https://www.ncl888.com/",
+                        status: 1,
+                    },
+                    {
+                        name: "长宏网",
+                        icon: chw,
+                        id: 1,
+                        desc: "",
+                        time: "2023-10-09",
+                        star: 4,
+                        remark: "实盘交易",
+                        url: "https://www.ncl888.com/",
+                        area: '广东省/云浮市',
+                        url: "https://www.ncl888.com/",
+                        status: 1,
+                    },
+                    {
+                        name: "兴盛网",
+                        icon: xsw,
+                        id: 5,
+                        desc: "",
+                        time: "2023-10-09",
+                        star: 2,
+                        remark: "实盘交易",
+                        area: '福建省/漳州市',
+                        url: "https://www.ncl888.com/",
+                        status: 2,
+                    },
+                    {
+                        name: "启泰网",
+                        icon: qtw,
+                        id: 6,
+                        desc: "",
+                        time: "2023-10-09",
+                        star: 2,
+                        remark: "实盘交易",
+                        area: ' 江苏省/宿迁市',
+                        url: "https://www.ncl888.com/",
+                        status: 3,
+                    },
+                    {
+                        name: "恒正网",
+                        icon: hzw,
+                        id: 7,
+                        desc: "",
+                        time: "2023-10-09",
+                        star: 2,
+                        remark: "实盘交易",
+                        area: '浙江省/舟山市',
+                        url: "https://www.ncl888.com/",
+                        status: 2,
+                    },
+                    {
+                        name: "诺亚创融",
+                        icon: nycf,
+                        id: 8,
+                        desc: "",
+                        time: "2023-10-09",
+                        star: 2,
+                        remark: "实盘交易",
+                        area: '上海市/虹口区',
+                        url: "https://www.ncl888.com/",
+                        status: 2,
+                    },
+                    {
+                        name: "鼎宝融",
+                        icon: dbr,
+                        id: 9,
+                        desc: "",
+                        time: "2023-10-09",
+                        star: 2,
+                        remark: "实盘交易",
+                        area: ' 北京市/东城区市',
+                        url: "https://www.ncl888.com/",
+                        status: 2,
+                    },
+                    {
+                        name: "七点财富",
+                        icon: qdcf,
+                        id: 10,
+                        desc: "",
+                        time: "2023-10-09",
+                        star: 2,
+                        remark: "实盘交易",
+                        area: '浙江省/舟山市',
+                        url: "https://www.ncl888.com/",
+                        status: 2,
+                    },
+                    {
+                        name: "佳成网",
+                        icon: jcw,
+                        id: 11,
+                        desc: "",
+                        time: "2023-10-09",
+                        star: 2,
+                        remark: "实盘交易",
+                        area: ' 浙江省/杭州市',
+                        url: "https://www.ncl888.com/",
+                        status: 2,
+                    },
+                ],
+                 web: {},   
+                commentList: getComment(),
+            },
+            created() {
+                var url = new URL(window.location.href);
+                var id = url.searchParams.get('id');
+                this.web = this.webList.find(l => l.id == id)
+            },
+            methods: {
+                handleCopy (url)  {
+                    window.open(url, '_blank')
+                },
+                randomAccess(min, max) {
+                    return Math.floor(Math.random() * (min - max) + max);
+                },
+                getAvatar  ()  {
+                    let id = this.generateRandomString(randomAccess(5, 10))
+                    return multiavatar(id)
+                },
+                generateRandomString(length) {
+                    let result = '';
+                    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    const charactersLength = characters.length;
+
+                    for (let i = 0; i < length; i++) {
+                        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                    }
+
+                    return result;
+                }
+            }
+        });
+    </script>
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0afd1cfa0a44adbd7dafbfd87b300d56";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>

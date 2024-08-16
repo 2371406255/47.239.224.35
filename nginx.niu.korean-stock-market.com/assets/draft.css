@@ -1,0 +1,98 @@
+.draft-hd {
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(18, 18, 18, .1);
+}
+
+.draft-hd a {
+    padding-bottom: 4px;
+    margin-right: 50px;
+    font-size: 16px;
+    color: #333333;
+}
+
+.draft-hd a.active {
+    border-bottom: 3px solid #3A7BFF;
+}
+
+/* .draft-bd {
+    margin-top: 30px;
+} */
+
+.draft-bd table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.draft-bd table tr:first-child {
+    height: 24px;
+    background: #E6E6E6;
+}
+
+.draft-bd table tr th {
+    font-weight: normal;
+}
+
+.draft-bd table .yj-upd-time {
+    width: 10%;
+}
+
+.draft-bd table tr td {
+    height: 61px;
+    text-align: center;
+    border-bottom: 1px solid rgba(18, 18, 18, .1);
+}
+
+.draft-bd table .yj-handle {
+    margin: auto;
+    max-width: 300px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.draft-bd table tr td:nth-child(1) {
+    width: 60px;
+}
+
+.draft-bd table tr td:nth-child(2) {
+    flex: 1;
+}
+
+.draft-bd table tr td:nth-child(3) {
+    flex: 1;
+}
+
+.draft-bd table tr td:nth-child(4) {
+    width: 190px;
+}
+
+.draft-bd table tr td:nth-child(5) {
+    width: 160px;
+}
+
+.draft-bd table tr td .oper-btn {
+    border-radius: 5px;
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    background: #3A7BFF;
+    color: #fff;
+}
+
+.draft-bd table tr td .oper-btn:first-child {
+    margin-right: 8px;
+}
+
+.draft-bd .draft-nothing {
+    margin-top: 162px;
+    padding-top: 177px;
+    background: url('../image/draft_noting_bg.png') no-repeat;
+    background-position: top center;
+    text-align: center;
+    font-size: 24px;
+    color: #666666;
+}

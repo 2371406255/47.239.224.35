@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/main.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/base.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/layer.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/platform.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/draft.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/mask.css">
+    <link rel="stylesheet" href="http://nginx.niu.korean-stock-market.com/assets/index.css">
+    <style>
+        @media (max-width: 768px) {
+            .header, .footer{
+                display: none;
+            }
+            
+            
+            .container{
+                padding: 0;
+                margin-top: 0;
+                min-width: 100px!important;
+            }
+        }
+        [v-cloak] {
+            display: none;
+        }
+        .footer {
+            width: 100%;
+            flex-shrink: 0;
+            text-align: center;
+            padding: 0;
+        
+        }
+        .fots {
+            background: #2b343d;
+            padding: 20px 0;
+            color: #b5b5b5;
+        }
+       .fots .wrap {
+            padding: 0 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .fots  .data span {
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+         .data  p {
+                margin-top: 10px;
+                font-size: 12px;
+                line-height: 1.6
+            }
+        .footer .copyright {
+            background: #141D26;
+            color: #fff;
+            padding: 20px 15px;
+            font-size: 12px;
+            line-height: normal;
+        }
+        .footer .copyright p, .footer .copyright p a{
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="header com-header">
+            <div class="com-hd-top">
+                <div class="w1200 clearfix" style="overflow: hidden;">
+                    <!-- nav -->
+                    <div class="nav fl">
+                        <a href="" class="top-go">推荐</a>
+                        <a href="" class="top-go">快讯</a>
+                        <a href="" class="top-go" rel="nofollow">观点</a>
+                        <a href="" class="top-go" rel="nofollow">平台排行</a>
+
+                    </div>
+                    <div class="header-right-wrap">
+                        <div class="login">
+                            <a href="">
+                                登录
+                            </a> /
+                            <a href="">
+                                注册
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="com-hd-search">
+                <div class="w1200 clearfix">
+                    <div class="logo">
+                        <h1
+                            style="background: url('http://nginx.niu.korean-stock-market.com/assets/logo.png') no-repeat center center;background-size: 100% 100%;">
+                            <a href="/">云配查</a>
+                        </h1>
+                    </div>
+
+                    <div class="slogan tc">
+                        <p>云配查一查</p>
+                        <p>投资更安全</p>
+                    </div>
+                    <!-- search -->
+                    <form class="search hd-search fr">
+                        <input type="text" class="search-input" id="searchInput" autocomplete="off" name="keywords"
+                            value="" placeholder="输入平台名、公司名、网址">
+                        <button type="button" class="search-submit-btn">云配查</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="" v-cloak>
+            <div class="content" id="content">
+                <div class="list-top">
+                    <div class="place">
+                        位置：
+                        <a href=""/>首页</a>
+                        <span>&gt;</span>
+                        <a href="">综合排行</a>
+                    </div>
+                </div>
+                <div class="w1200">
+    
+                    <div class="columns clearfix">
+                        <!-- 左边部分 -->
+                        <div class="columns-left top-230" style="top: 230px;">
+    
+                            <div class="tab" id="ajaxPage">
+                                <div class="tab-hd clearfix">
+                                    <a href="" class="active"><i
+                                            style="float:left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平台排行</i><i>综合排行</i></a>
+    
+                                </div>
+    
+                                <div class="tab-bd">
+                                    <div class="agent">
+                                        <div class="agent-item rank-item lseif "
+                                            :class="{ 'agent-tag-green': web.status == 1, 'agent-tag-grey': web.status == 3, 'agent-tag-red': web.status == 2 }"
+                                            v-for="(web, index) in webList" @click="handleClick(web)" :key="index">
+                                            <div class="agent-logo">
+                                                <a href="javascript:;"><img :src="web.icon" alt="" title="">
+                                                    <div class="agent-logo-label">
+                                                        <span>{{
+                                                statusArray.find((a) => a.value == web.status).name
+                                            }}</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="agent-info">
+                                                <div class="agent-info-top info-change1">
+                                                    <a class="agent-name info-change1-name" href="javascript:;">
+                                                        <span class="yj-ellip c-line-1" title=""> {{ web.name }} </span>
+                                                        <img alt="" :src="web.icon">
+                                                    </a>
+                                                    <div class="agent-badge">
+                                                        <div class="badge-item ">
+                                                        </div>
+                                                        <div class="badge-item ">
+                                                        </div>
+                                                        <div class="badge-item ">
+                                                        </div>
+                                                        <div class="badge-item ">
+                                                        </div>
+                                                        <div class="badge-item ">
+                                                        </div>
+                                                        <div class="badge-item ">
+                                                        </div>
+                                                        <div class="badge-item ">
+                                                        </div>
+                                                        <div class="badge-item ">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="agent-cell">
+                                                    <div class="agent-cell-35 c-line-1 cfe635B">利率: 0.06%-1%</div>
+                                                    <div class="agent-cell-65 c-line-1">注册资本: --</div>
+                                                    <div class="agent-cell-35 c-line-1">运营状态: 开业</div>
+                                                    <div class="agent-cell-65 c-line-1">注册地: 香港特别行政区</div>
+                                                </div>
+                                                <div class="agent-star">
+                                                    <div class="star-box">
+                                                        <p class="agent-star-label">星级</p>
+                                                        <div class="agent-star-img">
+                                                            <i class="active"></i>
+                                                            <i class="active"></i>
+                                                            <i class="active"></i>
+                                                            <i class="active"></i>
+                                                            <i class=""></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+    
+                                        </div>
+    
+                                        <!-- 分页 -->
+                                        <div style="text-align: center;">
+                                            <ul class="pagination">
+                                                <li class="disabled"><span>«</span></li>
+                                                <li class="active"><span>1</span></li>
+                                                <li><a href="">2</a></li>
+                                                <li><a href="">3</a></li>
+                                                <li><a href="">4</a></li>
+                                                <li><a href="">5</a></li>
+                                                <li><a href="">6</a></li>
+                                                <li><a href="">7</a></li>
+                                                <li><a href="">8</a></li>
+                                                <li class="disabled"><span>...</span></li>
+                                                <li><a href="">136</a></li>
+                                                <li><a href="">137</a></li>
+                                                <li><a href="">»</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                            </div>
+    
+                            <div class="warmPrompt">
+                                <span class="tipTitle">风险提示</span>
+                                <div class="tipText">
+                                    <p>中国政府和中国证监会严厉打击非法投资机构，本网站仅提供投资平台所在区域经营信息，不作为投资推荐。</p>
+                                    <p>恒信查提醒：远离场外资金盘，谨防诈骗！</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="columns-right">
+                            <div class="auth">
+                                <div class="auth-hd">
+                                    <img class="auth-hd-icon" src="http://nginx.niu.korean-stock-market.com/assets/platform_icon_v.png" alt="">
+                                    <span>权威认证</span>
+                                    <i>平台展示专区</i>
+                                </div>
+                                <div class="auth-bd">
+                                    <a href="javascript:;" class="auth-item"
+                                        :class="{ 'agent-tag-green': web.status == 1, 'agent-tag-grey': web.status == 3, 'agent-tag-red': web.status == 2 }"
+                                        v-for="(web, index) in webList1" @click="handleClick(web)" :key="index">
+                                        <img :src="web.icon" alt="">
+                                        <div class="agent-logo-label"><span>{{
+                                                statusArray.find((a) => a.value == web.status).name
+                                            }}</span></div>
+                                        <div class="agent-name">{{ web.name }}</div>
+                                    </a>
+    
+    
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+            <div id="__nuxt"><!---->
+                <div id="__layout">
+                    <div class="site-main">
+                        <div data-v-04210670="" class="rank-list">
+                            <div data-v-04210670="" class="rank-list-title">
+                                <div class="site-sticky" data-v-5e74bfc4="" data-v-2b678aac="">
+                                    <div class="site-sticky-seat" style="height:0;display:none;" data-v-5e74bfc4=""></div>
+                                    <div data-v-5e74bfc4="">
+                                        <div id="homeTop" class="home-top" data-v-b50cd034="" data-v-2b678aac="">
+                                            <div class="home-top-logo" data-v-b50cd034=""><a href="" class="home-top-left"
+                                                    data-v-b50cd034=""><img src="http://nginx.niu.korean-stock-market.com/assets/logo.png" alt=""
+                                                        data-v-b50cd034="">
+                                                    <h3 data-v-b50cd034="">投资查询工具</h3>
+                                                </a> <a href="index/index/paihang" aria-current="page"
+                                                    class="home-top-right nuxt-link-exact-active nuxt-link-active"
+                                                    data-v-b50cd034=""><img src="http://nginx.niu.korean-stock-market.com/assets/notification.17b479a.png" alt=""
+                                                        data-v-b50cd034=""></a>
+                                            </div>
+                                            <a href="index/search" class="go-search" data-v-b50cd034=""
+                                                style="margin: -7px auto">
+                                                <form action="index/index/paihang" data-v-b50cd034=""><input type="text"
+                                                        placeholder="输入平台名称，公司名称，网址" data-v-b50cd034=""> <img
+                                                        src="http://nginx.niu.korean-stock-market.com/assets/search.9fbee57.png" alt="" data-v-b50cd034="">
+                                                </form>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-v-04210670="" class="ranking-type van-tabs van-tabs--line">
+                                    <div class="van-tabs__content van-tabs__content--animated">
+                                        <div class="van-tabs__track"
+                                            style="transform: translate3d(0%, 0px, 0px); transition-duration: 0.3s;">
+                                            <div data-v-04210670="" role="tabpanel" class="van-tab__pane-wrapper">
+                                                <div class="van-tab__pane">
+                                                    <i style="padding:148px">平台排行</i>
+                                                    <div data-v-d4fdf1fc="" data-v-04210670="" class="rank-box">
+                                                        <ul data-v-d4fdf1fc="" class="rank-list-box">
+                                                            <li data-v-d4fdf1fc="" class="rank-list-item"
+                                                                v-for="(web, index) in webList" @click="handleClick(web)"
+                                                                :key="index">
+                                                                <a data-v-d4fdf1fc="" href="#"
+                                                                    :class="{ 'agent-tag-green': web.status == 1,'agent-tag-grey':web.status == 3,'agent-tag-red':web.status == 2}">
+                                                                    <div data-v-d4fdf1fc="" class="comp-cover">
+                                                                        <img data-v-d4fdf1fc="" :src="web.icon" alt="">
+                                                                        <i data-v-d4fdf1fc="">{{
+                                                                            statusArray.find((a) => a.value ==
+                                                                            web.status).name
+                                                                            }}</i>
+                                                                    </div>
+                                                                    <div data-v-d4fdf1fc="" class="rank-item-right">
+                                                                        <div data-v-d4fdf1fc="" class="rank-item-top">
+                                                                            <div data-v-d4fdf1fc="" class="brand-name">
+                                                                                <h3 data-v-d4fdf1fc="" class="t-line-1">
+                                                                                    {{web.name}} </h3>
+                                                                                <i data-v-d4fdf1fc=""></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div data-v-d4fdf1fc="" class="rank-item-bottom">
+                                                                            <span data-v-d4fdf1fc="">星级:</span>
+                                                                            <div data-v-d4fdf1fc="">
+                                                                                <img src="http://nginx.niu.korean-stock-market.com/assets/star.f7b3749.png"
+                                                                                    data-v-d4fdf1fc="">
+                                                                                <img src="http://nginx.niu.korean-stock-market.com/assets/star.f7b3749.png"
+                                                                                    data-v-d4fdf1fc="">
+                                                                                <img src="http://nginx.niu.korean-stock-market.com/assets/star.f7b3749.png"
+                                                                                    data-v-d4fdf1fc="">
+                                                                                <img src="http://nginx.niu.korean-stock-market.com/assets/star.f7b3749.png"
+                                                                                    data-v-d4fdf1fc="">
+                                                                                <img src="http://nginx.niu.korean-stock-market.com/assets/no-star.aa2ebf4.png"
+                                                                                    data-v-d4fdf1fc="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div data-v-d4fdf1fc="" class="rank-item-middle">
+                                                                            运营状态：<span data-v-d4fdf1fc="">开业</span>
+                                                                        </div>
+                                                                        <!--<div data-v-d4fdf1fc="" class="rank-num">-->
+                                                                        <!--  0-->
+                                                                        <!--</div>-->
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+    
+    
+                                                        </ul>
+                                                        <br>
+                                                        <div style="text-align: center;margin-right: 30px;list-style-type:none"
+                                                            id="page_list_s">
+                                                            <span><span>上一页</span></span>
+                                                            <span><a href="" style="border: 1px solid">下一页</a></span>
+    
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-v-04210670="" role="tabpanel" aria-hidden="true"
+                                                class="van-tab__pane-wrapper van-tab__pane-wrapper--inactive">
+                                                <div class="van-tab__pane"><!----></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-v-42ebfab3="" data-v-04210670="" class="side-bar">
+                                <div data-v-42ebfab3="" class="tab-show">
+                                    <div data-v-42ebfab3="" class="tab-item"><img data-v-42ebfab3=""
+                                            src="http://nginx.niu.korean-stock-market.com/assets/back-to-top.4f7c7fe.png">
+                                        <div data-v-42ebfab3="" role="button" tabindex="0"
+                                            class="van-cell van-cell--clickable">
+                                            <!--                <div data-v-42ebfab3="" class="van-cell__value van-cell__value&#45;&#45;alone"><img-->
+                                            <!--                        data-v-42ebfab3="" src="/static/mobile/picture/create-icon.fbe8bdb.png"></div>-->
+                                            <i data-v-42ebfab3="" class="van-icon van-icon-arrow van-cell__right-icon">
+                                                <!----></i>
+                                        </div> <!---->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="site-tabbar" data-v-6aa53454="">
+                            <div class="van-hairline--top-bottom van-tabbar van-tabbar--fixed" data-v-6aa53454="">
+                                <div class="van-tabbar-item" style="color:#333333;" data-v-6aa53454="">
+                                    <div class="van-tabbar-item__icon"><img src="http://nginx.niu.korean-stock-market.com/assets/footer-1.28cbfb4.png"
+                                            data-v-6aa53454="">
+                                        <!---->
+                                    </div>
+                                    <a href="/" class="van-tabbar-item__text">
+                                        首页
+                                    </a>
+                                </div>
+                                <div class="van-tabbar-item" style="color:#333333;" data-v-6aa53454="">
+                                    <div class="van-tabbar-item__icon"><img src="http://nginx.niu.korean-stock-market.com/assets/footer-2.86d310c.png"
+                                            data-v-6aa53454="">
+                                        <!---->
+                                    </div>
+                                    <a href="" class="van-tabbar-item__text">
+                                        排行
+                                    </a>
+                                </div>
+    
+                                <div class="van-tabbar-item" style="color:#333333;" data-v-6aa53454="">
+                                    <div class="van-tabbar-item__icon"><img src="http://nginx.niu.korean-stock-market.com/assets/footer-5.e4b76d1.png"
+                                            data-v-6aa53454="">
+                                        <!---->
+                                    </div>
+                                    <div class="van-tabbar-item__text">
+                                        我的
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+    
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+      
+               
+
+                <div class="footer">
+                    <div class="fots">
+                        <div class="wrap">
+                            <div class="data">
+                                <p>数据来源:
+                                    <span>全国企业信用信息公示系统</span>
+                                    <span>中国裁判文书网</span>
+                                    <span>中国执行信息公开网</span>
+                                    <span>国家知识产权局</span>
+                                    <span>商标局</span>
+                                    <span>版权局</span>
+                                </p>
+                                <p>
+                                    风险声明：
+                                    任何投资都具备高风险，投资需谨慎，更需要合法。云配查网站数据，及云配查网站内所有用户提供的所有信息，供用户免费查询，但仅作为参考与研究用途。
+                                    不构成对任何用户的投资建议，云配查不做任何推荐，用户需自行承担投资风险。版权所有，转载请注明来源。市场有风险，投资需谨慎。
+        
+                                </p>
+                                 </div>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        <p class="one">
+                            <a href="/"><span>关于我们</span></a>
+                            <a href="/"><span>联系方式</span></a>
+                            <a href="/"><span>用户协议</span></a>
+                            <a href="/"><span>免责声明</span></a>
+                        </p>
+                         <p class="two">版权所有：云配查科技有限公司 @ 云配查 &nbsp;&nbsp;电话：16521134445 &nbsp;&nbsp; 邮箱：g13227532388@gmail.com   </p>
+                    </div>
+                </div>
+            </div>
+
+    <script>
+        !function (e, t) {
+            function n() {
+                var e = d.clientWidth / 10;
+                d.style.fontSize = e + "px"
+            }
+
+            var d = t.documentElement, i = e.devicePixelRatio || 1;
+            if (function e() {
+                t.body ? t.body.style.fontSize = 12 * i + "px" : t.addEventListener("DOMContentLoaded", e)
+            }(), n(), e.addEventListener("resize", n), e.addEventListener("pageshow", (function (e) {
+                e.persisted && n()
+            })), i >= 2) {
+                var o = t.createElement("body"), a = t.createElement("div");
+                a.style.border = ".5px solid transparent", o.appendChild(a), d.appendChild(o), 1 === a.offsetHeight && d.classList.add("hairlines"), d.removeChild(o)
+            }
+        }(window, document)
+        window.addEventListener('resize', function() {
+            // 当窗口大小变化时，刷新页面
+            location.reload();
+        });
+    </script>
+    <script src="http://nginx.niu.korean-stock-market.com/assets/vue.js"></script>
+    <script>
+        var chw = 'http://nginx.niu.korean-stock-market.com/assets/images/chw.png'
+        var jcw = 'http://nginx.niu.korean-stock-market.com/assets/images/jcw.png'
+        var jww = 'http://nginx.niu.korean-stock-market.com/assets/images/jww.png'
+        var xsw = 'http://nginx.niu.korean-stock-market.com/assets/images/xsw.png'
+        var qtw = 'http://nginx.niu.korean-stock-market.com/assets/images/qtw.png'
+        var ymw = 'http://nginx.niu.korean-stock-market.com/assets/images/ymw.png'
+        var hzw = 'http://nginx.niu.korean-stock-market.com/assets/images/hzw.png'
+        var qdcf = 'http://nginx.niu.korean-stock-market.com/assets/images/qdcf.jpg'
+        var nycf = 'http://nginx.niu.korean-stock-market.com/assets/images/nycf.jpg'
+        var dbr = 'http://nginx.niu.korean-stock-market.com/assets/images/dbr.jpg'
+        var ncel = 'http://nginx.niu.korean-stock-market.com/assets/images/ncel.png'
+        new Vue({
+            el: '#app',
+            data: {
+                statusArray: [
+                    { name: "已验证", value: 1 },
+                    { name: "停业", value: 2 },
+                    { name: "待验证", value: 3 },
+                ],
+                webList : [
+                {
+                    name: "牛策略",
+                    icon: ncel,
+                    id: 4,
+                    desc: "新一代互联网券商，多种交易选择美股，港股，A股，国内国际期货，股指期货和国际外汇零门槛开户，资金三方监管，安全快捷，以领先技术与极致服务，变革投资体验。全球交易，牛策略与你相伴！",
+                    time: "2015-10-09",
+                    star: 4,
+                    remark: "实盘交易",
+                    area:'香港牛策略有限公司公司版',
+                    url: "https://www.ncl888.com/",
+                    status: 1, //1 正常 2 停业 3: 待验证
+                },
+                {
+                    name: "阳美网",
+                    icon: ymw,
+                    id: 2,
+                    desc: "",
+                    time: "2023-10-09",
+                    star: 2,
+                    remark: "实盘交易",
+                    area:'浙江省/杭州市',
+                    url: "https://www.ncl888.com/",
+                    status: 1,
+                },
+                {
+                    name: "嘉旺网",
+                    icon:jww,
+                    id: 3,
+                    desc: "",
+                    time: "2023-10-09",
+                    star: 2,
+                    remark: "实盘交易",
+                    area:'广东省/佛山市',
+                    url: "https://www.ncl888.com/",
+                    status: 1,
+                },
+                {
+                    name: "长宏网",
+                    icon: chw,
+                    id: 1,
+                    desc: "",
+                    time: "2023-10-09",
+                    star: 4,
+                    remark: "实盘交易",
+                    url: "https://www.ncl888.com/",
+                    area:'广东省/云浮市',
+                    url: "https://www.ncl888.com/",
+                    status: 1,
+                },
+                {
+                    name: "兴盛网",
+                    icon: xsw,
+                    id: 5,
+                    desc: "",
+                    time: "2023-10-09",
+                    star: 2,
+                    remark: "实盘交易",
+                    area: '福建省/漳州市',
+                    url: "https://www.ncl888.com/",
+                    status: 2,
+                },
+                {
+                    name: "启泰网",
+                    icon: qtw,
+                    id: 6,
+                    desc: "",
+                    time: "2023-10-09",
+                    star: 2,
+                    remark: "实盘交易",
+                    area:' 江苏省/宿迁市',
+                    url: "https://www.ncl888.com/",
+                    status: 3,
+                },
+                {
+                    name: "恒正网",
+                    icon: hzw,
+                    id: 7,
+                    desc: "",
+                    time: "2023-10-09",
+                    star: 2,
+                    remark: "实盘交易",
+                    area:'浙江省/舟山市',
+                    url: "https://www.ncl888.com/",
+                    status: 2,
+                },
+                {
+                    name: "诺亚创融",
+                    icon: nycf,
+                    id: 8,
+                    desc: "",
+                    time: "2023-10-09",
+                    star: 2,
+                    remark: "实盘交易",
+                    area:'上海市/虹口区',
+                    url: "https://www.ncl888.com/",
+                    status: 2,
+                },
+                {
+                    name: "鼎宝融",
+                    icon: dbr,
+                    id: 9,
+                    desc: "",
+                    time: "2023-10-09",
+                    star: 2,
+                    remark: "实盘交易",
+                    area:' 北京市/东城区市',
+                    url: "https://www.ncl888.com/",
+                    status: 2,
+                },
+                {
+                    name: "七点财富",
+                    icon: qdcf,
+                    id: 10,
+                    desc: "",
+                    time: "2023-10-09",
+                    star: 2,
+                    remark: "实盘交易",
+                    area:'浙江省/舟山市',
+                    url: "https://www.ncl888.com/",
+                    status: 2,
+                },
+                {
+                    name: "佳成网",
+                    icon: jcw,
+                    id: 11,
+                    desc: "",
+                    time: "2023-10-09",
+                    star: 2,
+                    remark: "实盘交易",
+                    area:' 浙江省/杭州市',
+                    url: "https://www.ncl888.com/",
+                    status: 2,
+                },
+                ],
+                
+                webList1: [],
+            },
+            created(){
+                this.webList1 = this.webList.filter((wb, index) => wb.status == 1);
+            },
+            methods: {
+                handleClick(item){
+                    window.location.href = './detail.html?id='+item.id
+                }
+            }
+        });
+    </script>
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?0afd1cfa0a44adbd7dafbfd87b300d56";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>
